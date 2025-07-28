@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dara – Cybersecurity & Tech Portfolio</title>
+  <title>Your Name – Cybersecurity Portfolio</title>
 
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 
-  <!-- Base Styles -->
   <style>
     :root {
       --primary: #0a192f;
@@ -20,9 +20,7 @@
       --font-heading: 'Montserrat', sans-serif;
     }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -32,47 +30,40 @@
       line-height: 1.6;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
     header {
-      background: var(--primary);
+      background: linear-gradient(120deg, var(--primary), #142841);
       color: white;
-      padding: 2rem 1rem;
+      padding: 6rem 2rem;
       text-align: center;
-      position: relative;
     }
 
     header h1 {
       font-family: var(--font-heading);
-      font-size: 2.5rem;
-      margin: 0 0 0.5rem;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: fadeInUp 1s ease-in-out;
     }
 
-    header h2 {
-      font-weight: 400;
-      font-size: 1.2rem;
+    header p {
       max-width: 600px;
       margin: 0 auto;
+      font-size: 1.2rem;
     }
 
     nav {
       background: var(--bg);
-      padding: 1rem;
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
+      padding: 1rem;
       border-bottom: 1px solid #e5e7eb;
     }
 
     nav a {
+      margin: 0 1rem;
       font-weight: 600;
-      font-size: 1rem;
       color: var(--text);
       position: relative;
+      text-decoration: none;
     }
 
     nav a::after {
@@ -90,38 +81,65 @@
       width: 100%;
     }
 
-    section {
-      max-width: 900px;
-      margin: 4rem auto;
-      padding: 0 1rem;
-    }
-
-    h3 {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      border-left: 4px solid var(--accent);
-      padding-left: 0.75rem;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-    }
-
-    .skills-grid div {
-      background: #f1f5f9;
+    .side-panel {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      background: var(--primary);
+      color: white;
       padding: 1rem;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      border-radius: 0 8px 8px 0;
+      z-index: 999;
     }
 
-    .skills-grid i {
+    .side-panel i {
+      display: block;
+      margin: 1rem 0;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .side-panel i:hover {
       color: var(--accent);
-      font-size: 1.25rem;
+    }
+
+    section {
+      padding: 4rem 1rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .timeline {
+      position: relative;
+      margin: 2rem 0;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0.5rem;
+      width: 4px;
+      background: var(--accent);
+    }
+
+    .timeline-entry {
+      margin-bottom: 2rem;
+      padding-left: 1rem;
+    }
+
+    .timeline-entry h4 {
+      margin: 0.25rem 0;
     }
 
     .contact-form input,
@@ -142,95 +160,85 @@
       font-weight: bold;
       border-radius: 6px;
       cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .contact-form button:hover {
-      background: #0097a7;
     }
 
     footer {
       text-align: center;
-      font-size: 0.9rem;
       padding: 2rem 1rem;
       background: #f8fafc;
     }
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 
 <body>
+  <div class="side-panel">
+    <i class="fas fa-shield-alt" title="Cybersecurity"></i>
+    <i class="fas fa-robot" title="Automation"></i>
+    <i class="fas fa-chart-line" title="Analytics"></i>
+    <i class="fas fa-quote-left" title="Quote"> </i>
+  </div>
 
   <header>
     <h1>Your Name</h1>
-    <h2>Cybersecurity Student | Tech Enthusiast | Future Consultant</h2>
+    <p>Cybersecurity student passionate about AI, risk, and transformation. Ready to consult, innovate, and lead securely.</p>
   </header>
 
   <nav>
     <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#portfolio">Portfolio</a>
     <a href="#experience">Experience</a>
+    <a href="#portfolio">Portfolio</a>
     <a href="#contact">Contact</a>
   </nav>
 
-  <section id="about">
-    <h3>About Me</h3>
-    <p>I’m a cybersecurity student with experience in automation, compliance, and digital transformation. My passion lies in bridging technology with business outcomes — whether that’s through AI, risk analysis, or streamlining secure workflows. I thrive in fast-paced, client-driven environments and love solving tough problems through scalable solutions.</p>
-    <a href="YourCV.pdf" target="_blank" download>📄 Download My CV</a>
+  <section id="about" data-aos="fade-up">
+    <h2>About Me</h2>
+    <p>I’m a cybersecurity student with a track record of automating compliance workflows and aligning tech with business goals. I’ve helped startups and global firms streamline operations using AI, Python, and secure system design.</p>
   </section>
 
-  <section id="skills">
-    <h3>Skills</h3>
-    <div class="skills-grid">
-      <div><i class="fas fa-shield-alt"></i> Cybersecurity & Compliance</div>
-      <div><i class="fas fa-cogs"></i> Process Automation</div>
-      <div><i class="fas fa-users"></i> Stakeholder Management</div>
-      <div><i class="fas fa-laptop-code"></i> Python & SQL</div>
-      <div><i class="fas fa-universal-access"></i> UX & Accessibility (WCAG 2.2)</div>
-      <div><i class="fas fa-network-wired"></i> Governance & Risk</div>
+  <section id="experience" data-aos="fade-up">
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div class="timeline-entry">
+        <h4>P&G – IT Project Manager Intern</h4>
+        <p>Led automation projects reducing manual compliance work by 99.9% across regions using Python and Power Automate.</p>
+      </div>
+      <div class="timeline-entry">
+        <h4>Freelance Developer</h4>
+        <p>Built digital products for UK startups, integrating AI tools and UX principles with WCAG 2.2 compliance.</p>
+      </div>
     </div>
   </section>
 
-  <section id="portfolio">
-    <h3>Portfolio</h3>
-    <p>Projects I’ve worked on include:</p>
+  <section id="portfolio" data-aos="fade-up">
+    <h2>Portfolio</h2>
     <ul>
-      <li>⚙️ Automated SAP security workflows (99.9% time savings)</li>
-      <li>🤖 Built AI tools for booking systems & email campaigns</li>
-      <li>🌐 Developed responsive websites for tech startups</li>
+      <li>📊 AI risk chatbot for internal enterprise security support</li>
+      <li>🌍 Cyber news subscription tool using Python for Neterix</li>
+      <li>⚙️ Startup automation platforms for bookings & email</li>
     </ul>
-    <a href="portfolio.html">View More Projects →</a>
   </section>
 
-  <section id="experience">
-    <h3>Experience</h3>
-    <p><strong>P&G (IT Project Manager Intern)</strong> – Led compliance automation tools in SAP Governance team. Reduced multi-day authorisation tasks to minutes.</p>
-    <p><strong>Freelance Web Developer</strong> – Built full-stack sites for UK startups using Python, JS, and no-code tools.</p>
-    <a href="experience.html">See Full Timeline →</a>
-  </section>
-
-  <section id="contact">
-    <h3>Contact Me</h3>
-    <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
-
-    <form class="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+  <section id="contact" data-aos="fade-up">
+    <h2>Contact</h2>
+    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
       <input type="text" name="name" placeholder="Your name" required />
-      <input type="email" name="_replyto" placeholder="Your email" required />
-      <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+      <input type="email" name="email" placeholder="Your email" required />
+      <textarea name="message" placeholder="Your message" rows="5" required></textarea>
       <button type="submit">Send Message</button>
     </form>
   </section>
 
   <footer>
-    <p>© 2025 Your Name. Built with 💙 for recruiters who love clean UX.</p>
+    <p>© 2025 Your Name — Built with clean UX & recruiter appeal.</p>
   </footer>
 
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
 </body>
 </html>
