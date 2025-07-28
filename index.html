@@ -2,134 +2,235 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name – Cybersecurity Portfolio</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pIVQf2Mw1RLFm6wU/Nh1ckfK35qSn8L4jf6VqIcqvvKIdqjUS+c+fNjNtEJ9C+kRuv2S5dwXGNi0EGLT2QDXBg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dara – Cybersecurity & Tech Portfolio</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Base Styles -->
   <style>
-    /* Base & Reset */
-    *, *::before, *::after { box-sizing: border-box; }
-    body { margin:0; font-family:'Roboto',sans-serif; background:#f5f7fa; color:#222; line-height:1.6; }
-    a { color:#0a66c2; text-decoration:none; }
-    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-      outline:3px solid #0a66c2; outline-offset:2px;
+    :root {
+      --primary: #0a192f;
+      --accent: #00bcd4;
+      --bg: #ffffff;
+      --text: #1f2937;
+      --font-main: 'Inter', sans-serif;
+      --font-heading: 'Montserrat', sans-serif;
     }
 
-    /* Nav Bar */
-    nav { background:#fff; position:fixed; top:0; width:100%; box-shadow:0 2px 6px rgba(0,0,0,0.1); z-index:1000; }
-    .nav-container { max-width:960px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding:1rem; }
-    .nav-logo { font-family:'Montserrat',sans-serif; font-size:1.5rem; font-weight:700; color:#0077b6; }
-    .nav-menu { display:flex; gap:1.5rem; }
-    .nav-menu a { font-family:'Montserrat',sans-serif; font-size:1rem; font-weight:600; text-transform:uppercase; }
-    .hamburger { display:none; cursor:pointer; flex-direction:column; gap:5px; }
-    .hamburger span { width:25px; height:3px; background:#0077b6; border-radius:2px; transition:0.3s; }
-
-    /* Responsive nav */
-    @media(max-width:768px) {
-      .nav-menu { position:fixed; top:56px; right:0; background:#fff; flex-direction:column; width:200px; padding:1rem; box-shadow:-2px 2px 8px rgba(0,0,0,0.15); transform:translateX(100%); transition:transform 0.3s; }
-      .nav-menu.open { transform:translateX(0); }
-      .hamburger { display:flex; }
+    *, *::before, *::after {
+      box-sizing: border-box;
     }
 
-    /* Container & sections */
-    .container { max-width:900px; margin:5rem auto 2rem; padding:0 1rem; }
-    section { background:#fff; border-radius:8px; padding:2rem; margin-bottom:2rem; box-shadow:0 0 15px rgba(0,122,204,0.1); opacity:0; transform:translateY(20px); animation:fadeUp 0.6s forwards; }
-    section:nth-of-type(1){animation-delay:0.2s;} section:nth-of-type(2){0.4s;} section:nth-of-type(3){0.6s;}
-    @keyframes fadeUp{to{opacity:1;transform:none;}}
+    body {
+      margin: 0;
+      font-family: var(--font-main);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-    /* Headings */
-    h1 { font-family:'Montserrat',sans-serif; font-size:2.5rem; color:#0077b6; margin-bottom:0.2rem; }
-    h2 { font-family:'Montserrat',sans-serif; color:#0077b6; margin-top:0; }
-    ul.skills { list-style:none; padding:0; columns:2; }
-    ul.skills li { margin:0.3rem 0; padding:0.5rem 1rem; background:#e0f0ff; border-radius:20px; font-weight:600; color:#0077b6; display:inline-flex; align-items:center; }
-    ul.skills li i { margin-right:8px; }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
 
-    .btn-cv { display:inline-block; margin-top:1rem; padding:0.75rem 1.5rem; background:#0077b6; color:#fff; border-radius:30px; font-weight:600; transition:0.3s; }
-    .btn-cv:hover { background:#005f8d; }
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      position: relative;
+    }
 
-    /* Contact */
-    form { max-width:400px; margin-top:1rem; }
-    label { display:block; font-weight:600; margin-bottom:0.25rem; }
-    input,textarea { width:100%; padding:0.5rem; margin-bottom:1rem; border:2px solid #ccc; border-radius:6px; font-size:1rem; }
-    input:focus,textarea:focus { border-color:#0077b6; }
+    header h1 {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      margin: 0 0 0.5rem;
+    }
 
-    button[type="submit"] { background:#0077b6; color:#fff; padding:0.75rem 1.5rem; border:none; border-radius:6px; cursor:pointer; font-weight:600; transition:0.3s; }
-    button[type="submit"]:hover { background:#005f8d; }
+    header h2 {
+      font-weight: 400;
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    nav {
+      background: var(--bg);
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text);
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      width: 0%;
+      left: 0;
+      bottom: -3px;
+      background: var(--accent);
+      transition: 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+
+    h3 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.75rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .skills-grid div {
+      background: #f1f5f9;
+      padding: 1rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .skills-grid i {
+      color: var(--accent);
+      font-size: 1.25rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .contact-form button {
+      background: var(--accent);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .contact-form button:hover {
+      background: #0097a7;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 2rem 1rem;
+      background: #f8fafc;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
+
 <body>
 
-<nav>
-  <div class="nav-container">
-    <div class="nav-logo">Your Name</div>
-    <div class="hamburger" id="hamburger" aria-label="Menu" tabindex="0">
-      <span></span><span></span><span></span>
-    </div>
-    <div class="nav-menu" id="nav-menu">
-      <a href="#about">About</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="experience.html">Experience</a>
-      <a href="references.html">References</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</nav>
-
-<div class="container">
-  <section id="about" tabindex="0">
+  <header>
     <h1>Your Name</h1>
-    <h2>Cybersecurity Student | Automation & Risk Solutions</h2>
-    <p>Cybersecurity student with international experience delivering automation and risk solutions across complex systems. Proven ability to streamline compliance by 99%, align technical outcomes with business priorities, and adapt to fast-paced, client-driven environments. Skilled in Python, SQL, and stakeholder collaboration with a sharp focus on governance and operational impact.</p>
-    <a class="btn-cv" href="Your_CV.pdf" target="_blank" download>Download CV</a>
-    <img src="https://images.unsplash.com/photo-1532619187603-a5c07f020972?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Abstract cybersecurity concept illustration" style="width:100%; border-radius:12px; margin-top:1rem;" />
+    <h2>Cybersecurity Student | Tech Enthusiast | Future Consultant</h2>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h3>About Me</h3>
+    <p>I’m a cybersecurity student with experience in automation, compliance, and digital transformation. My passion lies in bridging technology with business outcomes — whether that’s through AI, risk analysis, or streamlining secure workflows. I thrive in fast-paced, client-driven environments and love solving tough problems through scalable solutions.</p>
+    <a href="YourCV.pdf" target="_blank" download>📄 Download My CV</a>
   </section>
 
-  <section id="skills" tabindex="0">
-    <h2>Skills</h2>
-    <ul class="skills" aria-label="Skills list">
-      <li><i class="fa-solid fa-shield-halved"></i>Cybersecurity & Compliance</li>
-      <li><i class="fa-solid fa-gears"></i>Process Automation</li>
-      <li><i class="fa-solid fa-people-group"></i>Agile & Project Management</li>
-      <li><i class="fa-solid fa-handshake"></i>Stakeholder Engagement</li>
-      <li><i class="fa-solid fa-chart-line"></i>Workflow Optimization</li>
-      <li><i class="fa-solid fa-eye"></i>UX/UI & Accessibility (WCAG 2.2)</li>
-      <li><i class="fa-solid fa-chart-bar"></i>Business Analysis</li>
-      <li><i class="fa-solid fa-network-wired"></i>Cross-Functional Collaboration</li>
-      <li><i class="fa-brands fa-python"></i>Python & SQL</li>
-      <li><i class="fa-brands fa-microsoft"></i>Power Automate & Zapier</li>
+  <section id="skills">
+    <h3>Skills</h3>
+    <div class="skills-grid">
+      <div><i class="fas fa-shield-alt"></i> Cybersecurity & Compliance</div>
+      <div><i class="fas fa-cogs"></i> Process Automation</div>
+      <div><i class="fas fa-users"></i> Stakeholder Management</div>
+      <div><i class="fas fa-laptop-code"></i> Python & SQL</div>
+      <div><i class="fas fa-universal-access"></i> UX & Accessibility (WCAG 2.2)</div>
+      <div><i class="fas fa-network-wired"></i> Governance & Risk</div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <h3>Portfolio</h3>
+    <p>Projects I’ve worked on include:</p>
+    <ul>
+      <li>⚙️ Automated SAP security workflows (99.9% time savings)</li>
+      <li>🤖 Built AI tools for booking systems & email campaigns</li>
+      <li>🌐 Developed responsive websites for tech startups</li>
     </ul>
+    <a href="portfolio.html">View More Projects →</a>
   </section>
 
-  <section id="contact" tabindex="0">
-    <h2>Contact</h2>
+  <section id="experience">
+    <h3>Experience</h3>
+    <p><strong>P&G (IT Project Manager Intern)</strong> – Led compliance automation tools in SAP Governance team. Reduced multi-day authorisation tasks to minutes.</p>
+    <p><strong>Freelance Web Developer</strong> – Built full-stack sites for UK startups using Python, JS, and no-code tools.</p>
+    <a href="experience.html">See Full Timeline →</a>
+  </section>
+
+  <section id="contact">
+    <h3>Contact Me</h3>
     <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-    <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn Profile</a>
+    <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
 
-    <form action="YOUR_FORMSPREE_URL" method="POST" aria-label="Contact form">
-      <label for="name">Name</label>
-      <input id="name" name="name" type="text" required />
-
-      <label for="email">Email</label>
-      <input id="email" name="_replyto" type="email" required />
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
-
+    <form class="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+      <input type="text" name="name" placeholder="Your name" required />
+      <input type="email" name="_replyto" placeholder="Your email" required />
+      <textarea name="message" rows="5" placeholder="Your message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
   </section>
-</div>
 
-<script>
-// Toggle menu
-const hb = document.getElementById('hamburger'), menu = document.getElementById('nav-menu');
-hb.addEventListener('click', ()=> {
-  const open = menu.classList.toggle('open');
-  hb.setAttribute('aria-expanded', open);
-});
-</script>
+  <footer>
+    <p>© 2025 Your Name. Built with 💙 for recruiters who love clean UX.</p>
+  </footer>
 
 </body>
 </html>
