@@ -3,27 +3,40 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Your Name – Cybersecurity Student Portfolio</title>
+<title>Your Name – Cybersecurity Portfolio</title>
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet" />
 
+<!-- Font Awesome -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  integrity="sha512-pIVQf2Mw1RLFm6wU/Nh1ckfK35qSn8L4jf6VqIcqvvKIdqjUS+c+fNjNtEJ9C+kRuv2S5dwXGNi0EGLT2QDXBg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+
 <style>
   /* Reset & base */
-  *, *::before, *::after { box-sizing: border-box; }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
   body {
     font-family: 'Roboto', sans-serif;
-    background: #f5f7fa;
+    background: #f9fafb;
     margin: 0;
     color: #222;
     line-height: 1.6;
   }
   a {
-    color: #007acc;
+    color: #0a66c2;
     text-decoration: none;
   }
-  a:hover {
+  a:hover,
+  a:focus {
     text-decoration: underline;
+    outline-offset: 3px;
   }
 
   /* Navbar */
@@ -31,26 +44,80 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     background: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    display: flex;
-    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     z-index: 1000;
   }
-  nav ul {
-    list-style: none;
-    margin: 0; padding: 1rem 2rem;
+  .nav-container {
+    max-width: 960px;
+    margin: 0 auto;
     display: flex;
-    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
   }
-  nav li {
-    font-weight: 600;
+  .nav-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #0077b6;
   }
-  nav a {
+  .nav-menu {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .nav-menu a {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    padding: 0.5rem;
+    border-radius: 4px;
+  }
+  .nav-menu a:focus-visible {
+    outline: 3px solid #0077b6;
+    outline-offset: 2px;
+  }
+  .nav-menu a:hover {
+    background: #e0f0ff;
+    color: #0077b6;
+  }
+
+  /* Hamburger button */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+  .hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #0077b6;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* Responsive Nav */
+  @media (max-width: 768px) {
+    .nav-menu {
+      position: fixed;
+      top: 56px;
+      right: 0;
+      background: #fff;
+      flex-direction: column;
+      width: 200px;
+      padding: 1rem;
+      box-shadow: -2px 2px 8px rgba(0,0,0,0.15);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+    .nav-menu.open {
+      transform: translateX(0);
+    }
+    .hamburger {
+      display: flex;
+    }
   }
 
   /* Container */
@@ -88,12 +155,12 @@
     font-weight: 700;
     font-size: 2.75rem;
     margin-bottom: 0.2rem;
-    color: #007acc;
+    color: #0077b6;
   }
   h2 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    color: #007acc;
+    color: #0077b6;
     margin-top: 0;
   }
   h3 {
@@ -112,9 +179,14 @@
     margin: 0.3rem 0;
     padding: 0.5rem 1rem;
     border-radius: 20px;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     font-weight: 600;
-    color: #007acc;
+    color: #0077b6;
+  }
+  ul.skills li i {
+    margin-right: 8px;
+    font-size: 1.1rem;
   }
 
   /* Download CV Button */
@@ -122,14 +194,16 @@
     display: inline-block;
     margin-top: 1rem;
     padding: 0.75rem 1.5rem;
-    background: #007acc;
+    background: #0077b6;
     color: #fff;
     border-radius: 30px;
     font-weight: 600;
     transition: background-color 0.3s;
   }
-  .btn-cv:hover {
-    background: #005fa3;
+  .btn-cv:hover,
+  .btn-cv:focus-visible {
+    background: #005f8d;
+    outline-offset: 2px;
   }
 
   /* Contact Section */
@@ -137,7 +211,52 @@
     display: inline-block;
     margin-top: 0.5rem;
     font-weight: 600;
-    color: #0077b5;
+    color: #0077b6;
+  }
+  form {
+    margin-top: 1rem;
+    max-width: 400px;
+  }
+  label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  input, textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+  }
+  input:focus, textarea:focus {
+    border-color: #0077b6;
+    outline: none;
+  }
+  button[type="submit"] {
+    background: #0077b6;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+  }
+  button[type="submit"]:hover,
+  button[type="submit"]:focus-visible {
+    background: #005f8d;
+    outline-offset: 2px;
+  }
+
+  /* Footer Image */
+  .hero-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 1rem;
+    border-radius: 12px;
   }
 
   /* Responsive */
@@ -145,27 +264,35 @@
     ul.skills {
       columns: 1;
     }
-    nav ul {
-      gap: 1rem;
+    .nav-container {
       padding: 1rem;
     }
   }
 </style>
+
 </head>
 <body>
 
 <nav>
-  <ul>
-    <li><a href="#about">About Me</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="experience.html">Experience</a></li>
-    <li><a href="references.html">References</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="nav-container">
+    <div class="nav-logo" tabindex="0">Your Name</div>
+    <div class="hamburger" role="button" aria-label="Toggle menu" aria-expanded="false" tabindex="0" aria-controls="nav-menu" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-menu" id="nav-menu">
+      <a href="#about" tabindex="0">About Me</a>
+      <a href="portfolio.html" tabindex="0">Portfolio</a>
+      <a href="experience.html" tabindex="0">Experience</a>
+      <a href="references.html" tabindex="0">References</a>
+      <a href="#contact" tabindex="0">Contact</a>
+    </div>
+  </div>
 </nav>
 
 <div class="container">
-  <section id="about">
+  <section id="about" tabindex="0">
     <h1>Your Name</h1>
     <h2>Cybersecurity Student | Automation & Risk Solutions</h2>
     <p>
@@ -175,39 +302,54 @@
       problem-solving, governance, and operational impact.
     </p>
     <a class="btn-cv" href="YourName_CV.pdf" target="_blank" download>Download CV</a>
+    <img class="hero-image" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Abstract cybersecurity image" />
   </section>
 
-  <section id="skills">
+  <section id="skills" tabindex="0">
     <h2>Skills</h2>
-    <ul class="skills">
-      <li>Cybersecurity & Compliance</li>
-      <li>Process Automation</li>
-      <li>Agile Methodologies & Project Management</li>
-      <li>Stakeholder Engagement & Client Delivery</li>
-      <li>Workflow Optimization</li>
-      <li>UX/UI & Accessibility (WCAG 2.2)</li>
-      <li>Business Analysis & Digital Transformation</li>
-      <li>Cross-Functional Collaboration</li>
-      <li>Python & SQL</li>
-      <li>Power Automate & Zapier</li>
+    <ul class="skills" aria-label="List of skills">
+      <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>Cybersecurity & Compliance</li>
+      <li><i class="fa-solid fa-gear" aria-hidden="true"></i>Process Automation</li>
+      <li><i class="fa-solid fa-people-group" aria-hidden="true"></i>Agile Methodologies & Project Management</li>
+      <li><i class="fa-solid fa-handshake" aria-hidden="true"></i>Stakeholder Engagement & Client Delivery</li>
+      <li><i class="fa-solid fa-chart-line" aria-hidden="true"></i>Workflow Optimization</li>
+      <li><i class="fa-solid fa-eye" aria-hidden="true"></i>UX/UI & Accessibility (WCAG 2.2)</li>
+      <li><i class="fa-solid fa-chart-bar" aria-hidden="true"></i>Business Analysis & Digital Transformation</li>
+      <li><i class="fa-solid fa-network-wired" aria-hidden="true"></i>Cross-Functional Collaboration</li>
+      <li><i class="fa-brands fa-python" aria-hidden="true"></i>Python & SQL</li>
+      <li><i class="fa-brands fa-microsoft" aria-hidden="true"></i>Power Automate & Zapier</li>
     </ul>
   </section>
 
-  <section id="contact">
+  <section id="contact" tabindex="0">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-    <a class="linkedin" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn Profile</a>
-    <form action="https://formspree.io/f/your-form-id" method="POST" style="margin-top:1rem; max-width:400px;">
-      <label for="name">Name</label><br />
-      <input id="name" name="name" type="text" required style="width:100%; padding:0.5rem; margin-bottom:1rem;" /><br />
-      <label for="email">Email</label><br />
-      <input id="email" name="_replyto" type="email" required style="width:100%; padding:0.5rem; margin-bottom:1rem;" /><br />
-      <label for="message">Message</label><br />
-      <textarea id="message" name="message" rows="4" required style="width:100%; padding:0.5rem; margin-bottom:1rem;"></textarea><br />
-      <button type="submit" style="background:#007acc; color:#fff; padding:0.75rem 1.5rem; border:none; border-radius:5px; cursor:pointer;">Send</button>
+    <a class="linkedin" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" aria-label="LinkedIn Profile">LinkedIn Profile</a>
+
+    <form action="https://formspree.io/f/your-form-id" method="POST" aria-label="Contact form">
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" required aria-required="true" />
+
+      <label for="email">Email</label>
+      <input id="email" name="_replyto" type="email" required aria-required="true" />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" required aria-required="true"></textarea>
+
+      <button type="submit">Send Message</button>
     </form>
   </section>
 </div>
 
-</body>
-</html>
+<script>
+  // Hamburger toggle for mobile nav
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
+
+  hamburger.addEventListener('click', () => {
+    const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+    hamburger.setAttribute('aria-expanded', !expanded);
+    navMenu.classList.toggle('open');
+  });
+
+  //
