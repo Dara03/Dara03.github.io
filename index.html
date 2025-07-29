@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Cybersecurity & AI Consultant | Risk Transformation Specialist | Secure Digital Innovation">
-  <meta name="keywords" content="cybersecurity consulting, AI risk management, GRC automation, secure digital transformation, Deloitte, Accenture">
-  
-  <title>Cybersecurity & AI Consultant | Risk Transformation Portfolio</title>
-
-  <!-- Preload resources -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" as="style">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cybersecurity Graduate | Enterprise Automation & Risk Solutions</title>
+  <meta name="description" content="Proven deliverer of enterprise security automation solutions with 99.9% process improvements. Bridging technical implementation with strategic project management.">
   
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔐</text></svg>">
-
   <style>
     :root {
       --primary: #0a192f;
@@ -33,56 +26,29 @@
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    *, *::before, *::after { 
-      box-sizing: border-box; 
+    body {
+      font-family: var(--font-main);
+      line-height: 1.6;
+      color: var(--text);
       margin: 0;
       padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: var(--font-main);
       background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
     }
 
     header {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      padding: 8rem 2rem 6rem;
+      padding: 6rem 2rem 4rem;
       text-align: center;
-      position: relative;
     }
 
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50c0-5.523-4.477-10-10-10s-10 4.477-10 10 4.477 10 10 10 10-4.477 10-10zm0 20c0-11.046-8.954-20-20-20S10 58.954 10 70s8.954 20 20 20 20-8.954 20-20z' fill='%232563eb' fill-opacity='0.05'/%3E%3C/svg%3E");
-      opacity: 0.3;
-    }
-
-    header h1 {
+    h1, h2, h3 {
       font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      margin-bottom: 1.5rem;
-      position: relative;
     }
 
-    header p {
-      max-width: 700px;
-      margin: 0 auto 2rem;
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      position: relative;
+    h1 {
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      margin-bottom: 1rem;
     }
 
     .header-subtitle {
@@ -93,33 +59,40 @@
       border-radius: 4px;
       font-weight: 600;
       margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .header-highlight {
+      color: #93c5fd;
+      font-weight: 600;
     }
 
     nav {
+      background: white;
+      padding: 1rem;
       position: sticky;
       top: 0;
-      background: rgba(255, 255, 255, 0.98);
-      display: flex;
-      justify-content: center;
-      padding: 1rem;
-      border-bottom: 1px solid rgba(229, 231, 235, 0.8);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
+      z-index: 100;
       box-shadow: var(--shadow-sm);
     }
 
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin: 0;
+    }
+
     nav a {
-      margin: 0 1.25rem;
-      font-weight: 600;
-      color: var(--text);
-      position: relative;
       text-decoration: none;
-      transition: var(--transition);
-      font-size: 0.95rem;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      font-weight: 700;
-      color: var(--primary);
+      transition: var(--transition);
     }
 
     nav a:hover {
@@ -127,7 +100,7 @@
     }
 
     section {
-      padding: 5rem 1.5rem;
+      padding: 4rem 1.5rem;
       max-width: 1000px;
       margin: 0 auto;
     }
@@ -137,8 +110,7 @@
     }
 
     h2 {
-      font-family: var(--font-heading);
-      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      font-size: clamp(1.5rem, 3vw, 2rem);
       margin-bottom: 2rem;
       position: relative;
       display: inline-block;
@@ -149,96 +121,74 @@
       position: absolute;
       bottom: -8px;
       left: 0;
-      width: 60px;
+      width: 50px;
       height: 3px;
       background: var(--accent);
     }
 
-    .about-content {
+    .skills-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
 
-    @media (min-width: 768px) {
-      .about-content {
-        grid-template-columns: 1fr 1fr;
-        align-items: center;
-      }
-    }
-
-    .profile-img {
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      max-width: 100%;
-      height: auto;
-      aspect-ratio: 1/1;
-      object-fit: cover;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .skill-tag {
-      background: rgba(37, 99, 235, 0.1);
-      color: var(--accent-dark);
-      padding: 0.35rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    .experience-grid {
-      display: grid;
-      gap: 2rem;
-    }
-
-    .experience-card {
+    .skill-category {
       background: white;
       border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-      display: grid;
-      grid-template-columns: 1fr;
-    }
-
-    @media (min-width: 768px) {
-      .experience-card {
-        grid-template-columns: 200px 1fr;
-      }
-    }
-
-    .experience-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .experience-img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .experience-content {
       padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
     }
 
-    .experience-content h3 {
-      font-family: var(--font-heading);
+    .skill-category h3 {
       color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .skill-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skill-list li {
       margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.25rem;
+    }
+
+    .skill-list li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .experience-item {
+      margin-bottom: 3rem;
+    }
+
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+
+    .experience-title {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.1rem;
     }
 
     .experience-date {
       color: var(--text-light);
       font-size: 0.9rem;
-      margin-bottom: 0.75rem;
+    }
+
+    .experience-company {
+      font-weight: 600;
+      margin-bottom: 1rem;
       display: block;
     }
 
@@ -247,46 +197,102 @@
     }
 
     .experience-highlights li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
       position: relative;
-      padding-left: 1.25rem;
+      padding-left: 1.5rem;
     }
 
     .experience-highlights li::before {
-      content: '▹';
+      content: '';
       position: absolute;
       left: 0;
-      color: var(--accent);
+      top: 0.5rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
     }
 
-    .consulting-buzzwords {
-      background: rgba(37, 99, 235, 0.05);
-      border-left: 3px solid var(--accent);
-      padding: 1.5rem;
-      border-radius: 0 4px 4px 0;
+    .impact-metric {
+      display: inline-block;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--accent-dark);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+
+    .project-accordion {
       margin-top: 2rem;
     }
 
-    .consulting-buzzwords h4 {
-      font-family: var(--font-heading);
-      margin-bottom: 0.75rem;
-      color: var(--primary);
+    .project-card {
+      background: white;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
     }
 
-    .buzzword-tags {
+    .project-header {
+      padding: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .project-title {
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0;
+    }
+
+    .project-tech {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
+      margin-top: 0.5rem;
     }
 
-    .buzzword-tag {
-      background: white;
-      border: 1px solid var(--accent);
+    .tech-tag {
+      background: rgba(37, 99, 235, 0.1);
       color: var(--accent-dark);
-      padding: 0.35rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
       font-weight: 600;
+    }
+
+    .project-content {
+      padding: 0 1.25rem 1.25rem;
+      border-top: 1px solid #f3f4f6;
+    }
+
+    .project-description {
+      margin-bottom: 1rem;
+    }
+
+    .project-details {
+      margin-top: 1rem;
+    }
+
+    .project-details h4 {
+      font-size: 0.9rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-details ul {
+      padding-left: 1.25rem;
+      margin-top: 0.5rem;
+    }
+
+    .project-details li {
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
     }
 
     footer {
@@ -297,156 +303,235 @@
     }
 
     @media (max-width: 768px) {
-      header {
-        padding: 6rem 1.5rem 4rem;
-      }
-      
-      nav {
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        padding: 0.75rem;
-      }
-      
       section {
-        padding: 3rem 1.25rem;
+        padding: 3rem 1rem;
+      }
+      
+      nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
-
 <body>
   <header>
-    <h1>Cybersecurity & AI Consultant</h1>
-    <div class="header-subtitle">Risk Transformation Specialist</div>
-    <p>Bridging technical security expertise with strategic business alignment to drive secure digital innovation at scale</p>
+    <h1>Cybersecurity Graduate</h1>
+    <div class="header-subtitle">Enterprise Automation & Risk Solutions</div>
+    <p>Delivered <span class="header-highlight">high-impact security initiatives</span> at global scale through technical implementation and cross-functional leadership</p>
   </header>
 
   <nav>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#consulting">Consulting Approach</a>
+    <ul>
+      <li><a href="#skills">Core Skills</a></li>
+      <li><a href="#projects">Key Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
   </nav>
 
   <main>
-    <section id="about">
-      <h2>Professional Profile</h2>
-      <div class="about-content">
-        <div>
-          <p>Security-focused consultant with expertise in AI risk management and GRC automation, passionate about helping organizations navigate digital transformation securely. Combining technical depth with strategic vision to deliver solutions that balance innovation with risk mitigation.</p>
-          
-          <p>Specializing in frameworks that operationalize security controls within agile development pipelines - particularly valuable for organizations undergoing cloud migration or AI adoption.</p>
-          
-          <div class="skills">
-            <span class="skill-tag">AI Risk Management</span>
-            <span class="skill-tag">GRC Automation</span>
-            <span class="skill-tag">Cloud Security</span>
-            <span class="skill-tag">Security Architecture</span>
-            <span class="skill-tag">Compliance as Code</span>
-            <span class="skill-tag">Risk Quantification</span>
+    <section id="skills">
+      <h2>Enterprise-Ready Competencies</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Technical Implementation</h3>
+          <ul class="skill-list">
+            <li>Python/SQL automation pipelines</li>
+            <li>SAP HanaDB integration</li>
+            <li>Power Platform development</li>
+            <li>Low-code AI solutions</li>
+            <li>Enterprise system architecture</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Project Leadership</h3>
+          <ul class="skill-list">
+            <li>End-to-end project coordination</li>
+            <li>Stakeholder management</li>
+            <li>Solution documentation</li>
+            <li>Process re-engineering</li>
+            <li>Cross-functional collaboration</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Security Operations</h3>
+          <ul class="skill-list">
+            <li>Compliance workflow automation</li>
+            <li>Authorization analysis</li>
+            <li>Knowledge management</li>
+            <li>Penetration testing awareness</li>
+            <li>Enterprise UX optimization</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Enterprise Project Portfolio</h2>
+      <div class="project-accordion">
+        <div class="project-card">
+          <div class="project-header">
+            <h3 class="project-title">AI Chatbot Replacement Initiative</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="project-content">
+            <p class="project-description">Led end-to-end coordination of enterprise chatbot replacement integrating low-code AI tools with existing security infrastructure</p>
+            <div class="project-tech">
+              <span class="tech-tag">Project Management</span>
+              <span class="tech-tag">Power Platform</span>
+              <span class="tech-tag">Stakeholder Engagement</span>
+            </div>
+            <div class="project-details">
+              <h4>Key Contributions:</h4>
+              <ul>
+                <li>Delivered comprehensive project charter adopted by senior leadership as template for future initiatives</li>
+                <li>Bridged communication between international engineering teams and business units</li>
+                <li>Developed solution documentation reducing onboarding time by 40% for regional teams</li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div>
-          <!-- Placeholder for professional headshot -->
-          <img src="https://images.unsplash.com/photo-1600861195091-690c92f1d2cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80" alt="Professional headshot" class="profile-img">
+        
+        <div class="project-card">
+          <div class="project-header">
+            <h3 class="project-title">Automated Compliance Data Pipeline</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="project-content">
+            <p class="project-description">Designed and implemented enterprise-grade data integration between SAP and compliance systems</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">HanaDB</span>
+              <span class="tech-tag">Power Automate</span>
+            </div>
+            <div class="project-details">
+              <h4>Technical Impact:</h4>
+              <ul>
+                <li>Eliminated 12 manual process steps in critical compliance workflow</li>
+                <li>Reduced data processing time from 3 days to real-time synchronization</li>
+                <li>Implemented error handling covering 100% of edge cases identified in legacy process</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-header">
+            <h3 class="project-title">SAP Authorization Analysis Tool</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="project-content">
+            <p class="project-description">Proof-of-concept automating historically manual SAP BW data processes</p>
+            <div class="project-tech">
+              <span class="tech-tag">SAP Security</span>
+              <span class="tech-tag">BW Infoproviders</span>
+              <span class="tech-tag">Process Innovation</span>
+            </div>
+            <div class="project-details">
+              <h4>Security Impact:</h4>
+              <ul>
+                <li>Identified and remediated 3 critical access control gaps during pilot phase</li>
+                <li>Reduced analysis time from 8 hours to 15 minutes per request</li>
+                <li>Documented solution framework now used for similar automation initiatives</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="experience">
-      <h2>Relevant Experience</h2>
-      <div class="experience-grid">
-        <div class="experience-card">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80" alt="Corporate office" class="experience-img">
-          <div class="experience-content">
-            <h3>IT Risk & Compliance Automation</h3>
-            <span class="experience-date">Fortune 500 Company | 2023-Present</span>
-            <p>Transformed manual compliance processes through automation, reducing control testing time by 99.9% across multiple regulatory frameworks (SOX, GDPR, ISO 27001).</p>
-            
-            <div class="experience-highlights">
-              <ul>
-                <li>Developed Python-based automation suite that reduced 2,000+ annual manual hours to <20 hours through intelligent process mining and RPA integration</li>
-                <li>Implemented continuous compliance monitoring aligned with NIST AI RMF, creating real-time risk dashboards for leadership</li>
-                <li>Pioneered "Compliance as Code" approach now being adopted enterprise-wide</li>
-              </ul>
-            </div>
-          </div>
+      <h2>Professional Experience</h2>
+      
+      <div class="experience-item">
+        <div class="experience-header">
+          <span class="experience-title">IT Project Manager (Placement Year)</span>
+          <span class="experience-date">Jul 2024 - Present</span>
         </div>
+        <span class="experience-company">Fortune 500 Consumer Goods Company (Global SAP Security Team)</span>
         
-        <div class="experience-card">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80" alt="Startup office" class="experience-img">
-          <div class="experience-content">
-            <h3>AI Security Consultant</h3>
-            <span class="experience-date">Tech Startups | 2021-2023</span>
-            <p>Advised early-stage companies on implementing secure AI systems while maintaining development velocity and innovation pace.</p>
-            
-            <div class="experience-highlights">
-              <ul>
-                <li>Created lightweight AI governance frameworks tailored to startup environments, enabling secure adoption of LLMs</li>
-                <li>Developed risk scoring methodology for third-party AI tools that became standard evaluation criteria for VC due diligence</li>
-                <li>Built automated security testing pipelines for AI models that reduced vulnerability detection time from weeks to hours</li>
-              </ul>
-            </div>
-          </div>
+        <ul class="experience-highlights">
+          <li>
+            <span class="impact-metric">Enterprise Impact</span>
+            Contributed to multiple high-impact security and automation initiatives demonstrating technical implementation and cross-functional leadership
+          </li>
+          <li>
+            <span class="impact-metric">UX Leadership</span>
+            Redesigned team's SharePoint knowledge hub applying WCAG principles, improving information retrieval time by 30%
+          </li>
+          <li>
+            <span class="impact-metric">Security Growth</span>
+            Expanded security knowledge through penetration testing shadowing and compliance automation work
+          </li>
+        </ul>
+      </div>
+      
+      <div class="experience-item">
+        <div class="experience-header">
+          <span class="experience-title">Freelance Developer</span>
+          <span class="experience-date">Oct 2023 - Present</span>
         </div>
+        <span class="experience-company">UK Startups (Remote)</span>
+        
+        <ul class="experience-highlights">
+          <li>
+            <span class="impact-metric">75% Reduction</span>
+            Developed Python automation scripts and API integrations eliminating manual processes for clients
+          </li>
+          <li>
+            <span class="impact-metric">100% Delivery</span>
+            Maintained perfect on-time completion record across 8+ projects with varying technical requirements
+          </li>
+        </ul>
       </div>
     </section>
 
-    <section id="consulting">
-      <h2>Consulting Approach</h2>
-      <p>In today's rapidly evolving threat landscape, I help organizations implement <strong>pragmatic security strategies</strong> that enable rather than inhibit innovation. My methodology combines:</p>
-      
-      <div class="consulting-buzzwords">
-        <h4>Current Market Alignment</h4>
-        <p>Adapting leading frameworks to client-specific contexts:</p>
-        <div class="buzzword-tags">
-          <span class="buzzword-tag">NIST AI RMF</span>
-          <span class="buzzword-tag">MITRE ATLAS</span>
-          <span class="buzzword-tag">OWASP LLM Top 10</span>
-          <span class="buzzword-tag">FAIR Model</span>
-          <span class="buzzword-tag">Zero Trust</span>
+    <section id="education">
+      <h2>Education</h2>
+      <div class="experience-item">
+        <div class="experience-header">
+          <span class="experience-title">BSc (Hons) Cybersecurity with Placement Year</span>
+          <span class="experience-date">Expected Jun 2026</span>
         </div>
-      </div>
-      
-      <div style="margin-top: 2rem;">
-        <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Startup to Enterprise Adaptability</h3>
-        <p>Having worked across the organizational maturity spectrum, I specialize in scaling security practices appropriately:</p>
+        <span class="experience-company">University of Chester | Projected First-Class Honours</span>
         
-        <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.5rem;">
-          <div>
-            <h4 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 0.5rem;">For Startups</h4>
-            <ul class="experience-highlights">
-              <li>Lightweight, developer-friendly controls that don't slow innovation</li>
-              <li>Automated compliance pre-configuration for future funding rounds</li>
-              <li>AI risk assessment frameworks tailored to rapid iteration</li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 0.5rem;">For Enterprises</h4>
-            <ul class="experience-highlights">
-              <li>Legacy system modernization with security-by-design</li>
-              <li>AI governance integration with existing GRC programs</li>
-              <li>Quantitative risk analysis for executive decision-making</li>
-            </ul>
-          </div>
-        </div>
+        <ul class="experience-highlights">
+          <li>Key Modules: Enterprise Security Architecture, Cloud Security, Ethical Hacking</li>
+          <li>Academic Projects: Developed cyber news aggregator with real-time threat intelligence feeds</li>
+          <li>Activities: Security Society, STEM Outreach Volunteer</li>
+        </ul>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Cybersecurity & AI Consulting Portfolio</p>
-    <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">Designed for consulting excellence</p>
+    <p>Prepared for graduate opportunities in security consulting and enterprise risk management</p>
+    <p style="font-size: 0.9rem; margin-top: 1rem;">Available for 2026 graduate programme consideration</p>
   </footer>
 
   <script>
-    // Simple navigation scroll effect
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+    // Simple accordion functionality
+    document.querySelectorAll('.project-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        const icon = header.querySelector('i');
+        
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+          icon.classList.remove('fa-chevron-up');
+          icon.classList.add('fa-chevron-down');
+        } else {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.classList.remove('fa-chevron-down');
+          icon.classList.add('fa-chevron-up');
+        }
       });
     });
   </script>
