@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 export default function CVShowcase() {
   const [theme, setTheme] = useState("dark");
 
-  // Theme toggle
+  // Theme toggle effect
   useEffect(() => {
     document.documentElement.className = theme;
   }, [theme]);
@@ -20,6 +20,7 @@ export default function CVShowcase() {
             variant="ghost"
             size="icon"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="hover:bg-primary-foreground hover:text-primary transition"
           >
             {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
           </Button>
@@ -36,20 +37,20 @@ export default function CVShowcase() {
 
       {/* Hero */}
       <section className="text-center py-20 px-6">
-        <h2 className="text-4xl md:text-6xl font-bold mb-4">
+        <h2 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
           Final Year Cybersecurity Student & Freelancer
         </h2>
         <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
           Delivering automation, governance, and digital transformation
           solutions that align technical outcomes with business priorities.
         </p>
-        <div className="mt-8 flex justify-center gap-4 flex-wrap">
-          <Button asChild size="lg" variant="gradient">
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <Button asChild size="lg" className="bg-blue-600 text-white hover:bg-blue-700">
             <a href="/Dara_Sturgeon_CV.pdf" download>
               Download CV
             </a>
           </Button>
-          <Button asChild size="lg" variant="outline">
+          <Button asChild size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
             <a href="https://www.linkedin.com/in/dara-sturgeon-2249b6210" target="_blank">
               Connect on LinkedIn
             </a>
@@ -124,11 +125,6 @@ export default function CVShowcase() {
           </p>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-6 text-center text-muted-foreground text-sm">
-        © {new Date().getFullYear()} Dara Sturgeon. All Rights Reserved.
-      </footer>
     </div>
   );
 }
