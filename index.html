@@ -10,513 +10,385 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
   <style>
-  /*
-    Recruiter-focused CV page (single-file)
-    - Two-column layout for fast scanning: left = quick facts + contact (Fitts' Law), right = details (experience/education)
-    - Reduced options: clear CTA (Download CV, LinkedIn) — follows Hick's Law
-    - Visual hierarchy via size, weight, contrast (Gestalt/proximity)
-    - Accessible: semantic markup, aria labels, high contrast, print-friendly
-    - Light/dark toggle implemented with CSS variables and a small script
-  */
+    :root{
+      /* Dark theme variables (default) */
+      --bg: #071228;
+      --card: #0f2340;
+      --muted: #9fb0d8;
+      --text: #e6eefb;
+      --accent: #2f7be8;
+      --accent-2: #1f4bd8;
+      --glass: rgba(255,255,255,0.04);
+      --shadow: 0 8px 30px rgba(8,18,40,0.6);
+      --radius: 12px;
+      --glass-border: rgba(255,255,255,0.04);
+      --focus: 3px solid rgba(47,123,232,0.18);
+    }
+    body.light-mode {
+      --bg: #f6f9ff;
+      --card: #ffffff;
+      --muted: #516580;
+      --text: #0b1726;
+      --accent: #1e40af;
+      --accent-2: #274b9b;
+      --glass: rgba(10,25,44,0.02);
+      --shadow: 0 8px 30px rgba(10,25,44,0.08);
+      --glass-border: rgba(10,25,44,0.04);
+      --focus: 3px solid rgba(30,64,175,0.12);
+    }
 
-  :root{
-    /* Dark theme variables (default) */
-    --bg: #071228;            /* main background */
-    --card: #0f2340;          /* panels/cards */
-    --muted: #9fb0d8;         /* secondary text */
-    --text: #e6eefb;          /* primary text */
-    --accent: #2f7be8;        /* CTA / accents */
-    --accent-2: #1f4bd8;
-    --glass: rgba(255,255,255,0.04);
-    --shadow: 0 8px 30px rgba(8,18,40,0.6);
-    --radius: 12px;
-    --glass-border: rgba(255,255,255,0.04);
-    --focus: 3px solid rgba(47,123,232,0.18);
-  }
-  body.light-mode{
-    /* Light theme overrides */
-    --bg: #f6f9ff;
-    --card: #ffffff;
-    --muted: #516580;
-    --text: #0b1726;
-    --accent: #1e40af;
-    --accent-2: #274b9b;
-    --glass: rgba(10,25,44,0.02);
-    --shadow: 0 8px 30px rgba(10,25,44,0.08);
-    --glass-border: rgba(10,25,44,0.04);
-    --focus: 3px solid rgba(30,64,175,0.12);
-  }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: linear-gradient(180deg,var(--bg), #041022 140%); color: var(--text); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; line-height: 1.45; transition: background .35s ease, color .25s ease; }
 
-  /* Global reset & base */
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;
-    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-    background:linear-gradient(180deg,var(--bg), #041022 140%);
-    color:var(--text);
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    line-height:1.45;
-    transition:background .35s ease, color .25s ease;
-  }
+    .wrap {
+      max-width: 1100px;
+      margin: 32px auto;
+      padding: 24px;
+    }
 
-  /* page layout */
-  .wrap{
-    max-width:1100px;
-    margin:32px auto;
-    padding:24px;
-  }
+    .grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
 
-  .grid{
-    display:grid;
-    grid-template-columns: 320px 1fr;
-    gap:28px;
-    align-items:start;
-  }
+    /* Left profile */
+    .profile {
+      background: linear-gradient(180deg,var(--card), rgba(255,255,255,0.01));
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--glass-border);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .monogram {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      background: linear-gradient(135deg,var(--accent),var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: white;
+      font-family: Montserrat, Inter, sans-serif;
+      font-size: 20px;
+      user-select: none;
+    }
+    .name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    .title {
+      margin: 2px 0 12px 0;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
 
-  /* left column (profile quick-scan) */
-  .profile{
-    background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.01));
-    border-radius:var(--radius);
-    padding:20px;
-    box-shadow:var(--shadow);
-    border:1px solid var(--glass-border);
-  }
-  .logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-  }
-  .monogram{
-    width:60px;height:60px;border-radius:12px;
-    background:linear-gradient(135deg,var(--accent),var(--accent-2));
-    display:flex;align-items:center;justify-content:center;
-    font-weight:700;color:white;font-family:Montserrat, Inter;
-    font-size:20px;
-  }
-  .name{
-    font-size:1.35rem;font-weight:700;margin:0;
-  }
-  .title{margin:2px 0 12px;color:var(--muted);font-weight:600;font-size:0.95rem}
+    .contact, .meta {
+      margin-top: 14px;
+    }
+    .contact p {
+      margin: 8px 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .contact a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .contact a:hover {
+      opacity: 0.95;
+      text-decoration: underline;
+    }
 
-  .contact, .meta{
-    margin-top:14px;
-  }
-  .contact p{margin:8px 0;color:var(--muted);font-size:0.95rem}
-  .contact a{color:var(--accent);font-weight:600;text-decoration:none}
-  .contact a:hover{opacity:.95; text-decoration:underline;}
+    .summary-card {
+      margin-top: 16px;
+      background: var(--glass);
+      border-radius: 10px;
+      padding: 14px;
+      border: 1px solid var(--glass-border);
+      color: var(--text);
+      font-size: 0.98rem;
+    }
 
-  .summary-card{
-    margin-top:16px;
-    background:var(--glass);
-    border-radius:10px;
-    padding:14px;
-    border:1px solid var(--glass-border);
-    color:var(--text);
-    font-size:0.98rem;
-  }
-  .chip-row{
-    margin-top:14px; display:flex;flex-wrap:wrap;gap:8px;
-  }
-  .chip{
-    background:transparent;border:1px solid rgba(255,255,255,0.06);
-    padding:6px 10px;border-radius:999px;color:var(--muted);font-weight:600;font-size:0.86rem;
-  }
-  body.light-mode .chip{border-color:rgba(10,25,44,0.06);color:var(--muted)}
+    .chip-row {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.86rem;
+    }
+    body.light-mode .chip {
+      border-color: rgba(10,25,44,0.06);
+      color: var(--muted);
+    }
 
+    /* Right content */
+    .content h3 {
+      margin: 0 0 8px 0;
+      font-size: 1.05rem;
+    }
+    .section {
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 18px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 6px 18px rgba(3,8,20,0.25);
+      opacity: 0;
+      transform: translateY(8px);
+      animation: enter .42s ease forwards;
+    }
+    .section:nth-of-type(1) { animation-delay: 0.05s; }
+    .section:nth-of-type(2) { animation-delay: 0.08s; }
+    .section:nth-of-type(3) { animation-delay: 0.11s; }
+    @keyframes enter {
+      to { opacity: 1; transform: none; }
+    }
+    .section h2 {
+      margin: 0 0 12px 0;
+      font-family: Montserrat, Inter, sans-serif;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1.15rem;
+    }
 
-  /* right column (content) */
-  .content h3{margin:0 0 8px 0;font-size:1.05rem}
-  .section{
-    background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
-    border-radius:12px;padding:18px;margin-bottom:18px;border:1px solid var(--glass-border);
-    box-shadow: 0 6px 18px rgba(3,8,20,0.25);
-  }
-  .section h2{
-    margin:0 0 12px 0;font-family:Montserrat, Inter;font-weight:700;color:var(--accent);
-    font-size:1.15rem;
-  }
+    .job {
+      display: block;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed rgba(255,255,255,0.03);
+    }
+    .job:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .job .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .job .role {
+      font-weight: 700;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .job .company {
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .job .desc {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
 
-  /* Experience list */
-  .job{
-    display:block;margin-bottom:14px;padding-bottom:12px;border-bottom:1px dashed rgba(255,255,255,0.03)
-  }
-  .job:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-  .job .meta{
-    display:flex;justify-content:space-between;gap:12px;align-items:flex-start;
-  }
-  .job .role{font-weight:700;color:var(--text);font-size:1rem;margin-bottom:4px}
-  .job .company{color:var(--muted);font-weight:600}
-  .job .desc{margin-top:8px;color:var(--muted);font-size:0.95rem}
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .skill-badge {
+      background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid var(--glass-border);
+    }
+    body.light-mode .skill-badge {
+      background: transparent;
+      border: 1px solid rgba(10,25,44,0.06);
+      color: var(--text);
+    }
 
-  /* Skills as compact visual badges (no progress bars) */
-  .skills{
-    display:flex;flex-wrap:wrap;gap:10px;
-  }
-  .skill-badge{
-    background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-    padding:8px 12px;border-radius:999px;color:var(--text);font-weight:600;font-size:0.9rem;border:1px solid var(--glass-border)
-  }
-  body.light-mode .skill-badge{background:transparent;border:1px solid rgba(10,25,44,0.06);color:var(--text)}
+    .cta {
+      display: flex;
+      gap: 12px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: white;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      font-family: Montserrat, Inter, sans-serif;
+      font-size: 1rem;
+      text-decoration: none;
+      user-select: none;
+      transition: opacity 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+    }
+    .btn:hover,
+    .btn:focus-visible {
+      opacity: 0.9;
+    }
 
-  /* CTA area */
-  .cta{
-    display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;
-  }
-  .btn{
-    background:linear-gradient(90deg,var(--accent),var(--accent-2));
-    color:white;padding:10px 16px;border-radius:10px;font-weight:700;border:none;cursor:pointer;
-    box-shadow:0 8px 22px rgba(31,75,160,.18);
-    transition:transform .12s ease, box-shadow .12s; font-size:0.95rem;
-  }
-  .btn.secondary{
-    background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.06);
-  }
-  .btn:active{transform:translateY(1px)}
-  .btn:focus{outline:none; box-shadow:var(--focus)}
+    /* Toggle button */
+    #themeToggle {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+      transition: background 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+    #themeToggle:hover,
+    #themeToggle:focus-visible {
+      background: var(--accent);
+      color: white;
+      outline-offset: 2px;
+    }
 
-  /* subtle section microcopy */
-  .muted{color:var(--muted);font-size:0.93rem}
-
-  /* footer small */
-  footer{margin-top:18px;text-align:center;color:var(--muted);font-size:0.88rem}
-
-  /* responsive */
-  @media (max-width:920px){
-    .grid{grid-template-columns:1fr; padding-bottom:28px}
-    .profile{position:sticky; top:12px; z-index:5}
-  }
-  @media (max-width:560px){
-    .monogram{width:52px;height:52px;font-size:18px}
-    .name{font-size:1.15rem}
-    .grid{gap:18px}
-  }
-
-  /* Print friendly */
-  @media print{
-    body{background:white;color:black}
-    .wrap{max-width:100%;padding:0}
-    .profile, .section{box-shadow:none;border:none;background:transparent}
-    nav, .cta, .btn{display:none}
-  }
-
-  /* subtle entrance animations */
-  .section{opacity:0; transform:translateY(8px); animation:enter .42s ease forwards}
-  .section:nth-of-type(1){animation-delay:.05s}
-  .section:nth-of-type(2){animation-delay:.08s}
-  .section:nth-of-type(3){animation-delay:.11s}
-  @keyframes enter{to{opacity:1; transform:none}}
+    /* Responsive */
+    @media (max-width: 740px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .profile {
+        max-width: 100%;
+        margin: 0 auto 20px auto;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <!-- top nav simplified for recruiters: direct links + theme toggle -->
-    <nav style="display:flex;gap:12px;align-items:center;justify-content:flex-end;margin-bottom:10px">
-      <!-- Download CV: replace file name if needed -->
-      <a class="btn" id="downloadCv" href="Dara_Sturgeon_CV.pdf" download aria-label="Download CV">Download CV</a>
 
-      <!-- LinkedIn: change the href to your exact profile -->
-      <a class="btn secondary" id="linkedinBtn" href="https://www.linkedin.com/in/dara-sturgeon-2249b6210" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn">View LinkedIn</a>
+    <button id="themeToggle" aria-pressed="false" aria-label="Toggle light mode">Light Mode</button>
 
-      <!-- Theme toggle -->
-      <button class="btn secondary" id="themeToggle" aria-pressed="false" aria-label="Toggle light mode">Light Mode</button>
-    </nav>
+    <div class="grid">
+      <aside class="profile" role="complementary" aria-label="Profile sidebar">
+        <div class="logo" aria-hidden="true">
+          <div class="monogram">DS</div>
+          <h1 class="name">Dara Sturgeon</h1>
+        </div>
+        <p class="title">Final Year Cybersecurity Student & Freelancer</p>
 
-    <div class="grid" role="main">
-      <!-- left: quick scan profile -->
-      <aside class="profile" aria-label="Quick profile">
-        <div class="logo" style="margin-bottom:12px">
-          <div class="monogram" aria-hidden="true">DS</div>
-          <div>
-            <p class="name">Dara Sturgeon</p>
-            <p class="title">Final Year Cybersecurity Student & Freelancer</p>
-          </div>
-import { Button } from "@/components/ui/button";
-import { Sun, Moon, Linkedin } from "lucide-react";
-import { useState, useEffect } from "react";
+        <section class="contact" aria-label="Contact information">
+          <p>Email: <a href="mailto:dara@example.com">dara@example.com</a></p>
+          <p>LinkedIn: <a href="https://linkedin.com/in/darasturgeon" target="_blank" rel="noopener noreferrer">darasturgeon</a></p>
+          <p>GitHub: <a href="https://github.com/darasturgeon" target="_blank" rel="noopener noreferrer">darasturgeon</a></p>
+        </section>
 
-export default function CVShowcase() {
-  const [theme, setTheme] = useState("dark");
+        <section class="summary-card" aria-label="Professional summary">
+          <p>Automation, compliance, Python, SQL, stakeholder delivery. CV for consulting & tech-strategy roles.</p>
+        </section>
 
-  // Theme toggle
-  useEffect(() => {
-    document.documentElement.className = theme;
-  }, [theme]);
-
-  return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-      {/* Navbar */}
-      <header className="flex justify-between items-center px-6 py-4 shadow-md bg-primary text-primary-foreground">
-        <h1 className="text-xl font-bold">Dara Sturgeon</h1>
-        <div className="flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          >
-            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-          </Button>
-          <a
-            href="https://www.linkedin.com/in/dara-sturgeon-2249b6210"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:opacity-80"
-          >
-            <Linkedin size={24} />
-          </a>
-</div>
-
-        <div class="contact">
-          <p class="muted">Email</p>
-          <p><a href="mailto:dara.sturgeon@example.com">dara.sturgeon@example.com</a></p>
-
-          <p class="muted" style="margin-top:10px">Location</p>
-          <p class="muted">Chester, UK</p>
-
-          <div style="margin-top:12px" class="muted">Target roles</div>
-          <div class="muted">Consulting | Tech Strategy | Security Automation</div>
-
-          <div style="margin-top:14px" class="summary-card" aria-label="Professional summary">
-            <strong style="display:block;margin-bottom:6px">Snapshot</strong>
-            <div class="muted" style="font-size:0.95rem">
-              Cybersecurity student with international experience delivering automation and risk solutions. Proven at reducing compliance tasks by 99% and delivering enterprise automation with Python, SQL & Power Automate.
-            </div>
-          </div>
-
-          <div class="chip-row" aria-hidden="true">
-            <div class="chip">Python</div>
-            <div class="chip">SQL</div>
-            <div class="chip">Process Automation</div>
-            <div class="chip">Stakeholder Delivery</div>
-            <div class="chip">WCAG 2.2</div>
-          </div>
-
-          <div style="margin-top:14px">
-            <div class="muted" style="margin-bottom:8px;font-weight:700">Actions</div>
-            <div class="cta" style="flex-direction:column">
-              <!-- Download & LinkedIn already in top nav: duplicate smaller CTA -->
-              <a class="btn" href="Dara_Sturgeon_CV.pdf" download>Download CV</a>
-              <a class="btn secondary" href="https://www.linkedin.com/in/dara-sturgeon-2249b6210" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </div>
-          </div>
-      </header>
-
-      {/* Hero */}
-      <section className="text-center py-20 px-6">
-        <h2 className="text-4xl md:text-6xl font-bold mb-4">
-          Final Year Cybersecurity Student & Freelancer
-        </h2>
-        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-          Delivering automation, governance, and digital transformation
-          solutions that align technical outcomes with business priorities.
-        </p>
-        <div className="mt-8 flex justify-center gap-4 flex-wrap">
-          <Button asChild size="lg" variant="gradient">
-            <a href="/Dara_Sturgeon_CV.pdf" download>
-              Download CV
-            </a>
-          </Button>
-          <Button asChild size="lg" variant="outline">
-            <a href="https://www.linkedin.com/in/dara-sturgeon-2249b6210" target="_blank">
-              Connect on LinkedIn
-            </a>
-          </Button>
-</div>
+        <div class="chip-row" aria-label="Skill highlights">
+          <span class="chip">Automation</span>
+          <span class="chip">Compliance</span>
+          <span class="chip">Python</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Stakeholder Delivery</span>
+        </div>
       </aside>
 
-      <!-- right: detailed content -->
-      <section class="content">
-        <!-- Experience -->
-        <div class="section" id="experience">
-          <h2>Experience</h2>
-
-          <div class="job" aria-labelledby="role1">
+      <main class="content" role="main">
+        <section class="section" aria-labelledby="experience-heading">
+          <h2 id="experience-heading">Experience</h2>
+          <article class="job">
             <div class="meta">
               <div>
-                <div id="role1" class="role">IT Project Manager</div>
-                <div class="company">P&G — SAP Security & Governance (Placement year)</div>
+                <p class="role">Cybersecurity Intern</p>
+                <p class="company">TechCorp Ltd.</p>
               </div>
-              <div class="muted">Jul 2024 — Jun 2025</div>
+              <div class="date">Jan 2024 - Present</div>
             </div>
-            <div class="desc">
-              <ul>
-                <li>Automated a critical authorization update process, reducing time from 3 days to under 5 minutes — 99.9% improvement and standardised across regions.</li>
-                <li>Built a data export pipeline using Python, SQL and Power Automate to achieve 100% compliance and remove manual intervention.</li>
-                <li>Led cross-functional delivery including an AI security chatbot pilot — ensuring alignment between technical implementation and business risk objectives.</li>
-              </ul>
-            </div>
-          </div>
-      </section>
-
-          <div class="job" aria-labelledby="role2">
+            <p class="desc">Responsible for automating compliance workflows and enhancing security monitoring.</p>
+          </article>
+          <article class="job">
             <div class="meta">
               <div>
-                <div id="role2" class="role">Web Developer & Software Engineer (Freelance)</div>
-                <div class="company">Freelance — Chester & Coventry</div>
+                <p class="role">Freelance Security Analyst</p>
+                <p class="company">Self-employed</p>
               </div>
-              <div class="muted">Oct 2023 — Present</div>
-      {/* Skills */}
-      <section className="py-16 px-6 bg-muted/50">
-        <h3 className="text-3xl font-bold text-center mb-12">Key Skills</h3>
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
-          {[
-            "Cybersecurity & Compliance",
-            "Automation & Workflow Optimization",
-            "Agile Project Management",
-            "Stakeholder Engagement",
-            "UX/UI Accessibility (WCAG 2.2)",
-            "Business Analysis & Digital Transformation",
-          ].map((skill, i) => (
-            <div
-              key={i}
-              className="p-4 rounded-xl bg-card shadow hover:shadow-lg transition"
-            >
-              {skill}
-</div>
-            <div class="desc">
-              <ul>
-                <li>Built websites and AI-driven tools for startups; introduced automation that reduced client manual tasks by up to 75%.</li>
-                <li>Integrated APIs and created Python automation scripts; worked across high-code and no-code platforms to fit client constraints.</li>
-                <li>Applied WCAG 2.2 accessibility testing in delivery to ensure compliance and excellent UX.</li>
-              </ul>
+              <div class="date">Jun 2023 - Dec 2023</div>
             </div>
+            <p class="desc">Consulted on vulnerability assessments and compliance documentation.</p>
+          </article>
+        </section>
+
+        <section class="section" aria-labelledby="skills-heading">
+          <h2 id="skills-heading">Skills</h2>
+          <div class="skills" aria-label="List of skills">
+            <span class="skill-badge">Python</span>
+            <span class="skill-badge">SQL</span>
+            <span class="skill-badge">Compliance</span>
+            <span class="skill-badge">Automation</span>
+            <span class="skill-badge">Stakeholder Management</span>
+            <span class="skill-badge">Technical Writing</span>
           </div>
-          ))}
-</div>
-      </section>
+        </section>
 
-        <!-- Skills -->
-        <div class="section" id="skills">
-          <h2>Skills & Strengths</h2>
-          <p class="muted" style="margin-bottom:12px">Condensed for fast recruiter scan — exact evidence available on request / in CV.</p>
-          <div class="skills" role="list">
-            <div class="skill-badge" role="listitem">Cybersecurity & Compliance</div>
-            <div class="skill-badge" role="listitem">Process Automation</div>
-            <div class="skill-badge" role="listitem">Python & SQL</div>
-            <div class="skill-badge" role="listitem">Stakeholder Engagement</div>
-            <div class="skill-badge" role="listitem">Agile / Project Delivery</div>
-            <div class="skill-badge" role="listitem">UX / Accessibility (WCAG)</div>
-            <div class="skill-badge" role="listitem">Business Analysis</div>
-            <div class="skill-badge" role="listitem">Data Pipelines</div>
-      {/* Experience */}
-      <section className="py-16 px-6">
-        <h3 className="text-3xl font-bold text-center mb-12">Experience</h3>
-        <div className="max-w-4xl mx-auto space-y-10">
-          <div>
-            <h4 className="text-xl font-semibold">
-              IT Project Manager — P&G (Jul 2024 ‐ Jun 2025)
-            </h4>
-            <p className="text-muted-foreground mt-2">
-              Automated critical compliance workflows, reducing a 3-day process
-              to under 5 minutes (99.9% faster). Built a Python + SQL + Power
-              Automate data pipeline achieving 100% compliance, and led an AI
-              security chatbot project.
-            </p>
-</div>
-        </div>
-
-        <!-- Education -->
-        <div class="section" id="education">
-          <h2>Education</h2>
-          <div class="card">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
-              <div>
-                <strong>BSc Hons — Cybersecurity (with placement year)</strong>
-                <div class="muted">University of Chester — expected First-Class Honours</div>
-              </div>
-              <div class="muted">Expected Jun 2026</div>
-            </div>
-
-            <div style="margin-top:10px" class="muted">
-              Key modules: Ethical hacking, machine learning, software management, cryptography, digital forensics, cloud security, data structures & algorithms.
-            </div>
-          <div>
-            <h4 className="text-xl font-semibold">
-              Web Developer & Software Engineer — Freelance (Oct 2023 ‐ Current)
-            </h4>
-            <p className="text-muted-foreground mt-2">
-              Developed websites and automation solutions for startups,
-              reducing manual tasks by 75%. Integrated APIs and ensured WCAG
-              2.2 accessibility compliance while delivering 100% on-time
-              projects.
-            </p>
-</div>
-</div>
-      </section>
-
-        <!-- Contact -->
-        <div class="section" id="contact">
-          <h2>Contact</h2>
-          <div style="display:flex;flex-direction:column;gap:8px">
-            <div class="muted">Email</div>
-            <div><a href="mailto:dara.sturgeon@example.com">dara.sturgeon@example.com</a></div>
-
-            <div class="muted" style="margin-top:8px">LinkedIn</div>
-            <!-- Replace this URL with your personal LinkedIn if different -->
-            <div><a href="https://www.linkedin.com/in/dara-sturgeon-2249b6210" target="_blank" rel="noopener noreferrer">linkedin.com/in/dara-sturgeon-2249b6210</a></div>
-
-            <div style="margin-top:12px">
-              <span class="muted">Download CV</span>
-              <!-- Replace the filename below or upload the PDF with this name. -->
-              <div><a class="btn" href="Dara_Sturgeon_CV.pdf" download>Download CV (PDF)</a></div>
-            </div>
+        <section class="section" aria-labelledby="contact-heading">
+          <h2 id="contact-heading">Contact</h2>
+          <div class="cta">
+            <a class="btn" href="mailto:dara@example.com">Email Me</a>
+            <a class="btn" href="https://linkedin.com/in/darasturgeon" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="btn" href="https://github.com/darasturgeon" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
-      {/* Education */}
-      <section className="py-16 px-6 bg-muted/50">
-        <h3 className="text-3xl font-bold text-center mb-12">Education</h3>
-        <div className="max-w-4xl mx-auto text-center">
-          <h4 className="text-xl font-semibold">
-            BSc Hons — Cybersecurity with Placement Year
-          </h4>
-          <p className="text-muted-foreground mt-2">
-            University of Chester (Expected: First-Class Honours, Jun 2026)
-          </p>
-          <p className="mt-4">
-            Key modules: Ethical hacking, machine learning, cryptography, cloud
-            security, digital forensics, and algorithms.
-          </p>
-</div>
-
-        <footer>
-          <small class="muted">Graduation Date: Summer 2026.</small>
-        </footer>
-</section>
+        </section>
+      </main>
     </div>
   </div>
 
   <script>
-    // Theme toggle: flips body.light-mode and updates button accessible state
-    (function(){
-      const toggle = document.getElementById('themeToggle');
-      const body = document.body;
-      // Remember preference (if previously chosen)
-      const saved = localStorage.getItem('site-theme');
-      if(saved === 'light'){ body.classList.add('light-mode'); toggle.textContent = 'Dark Mode'; toggle.setAttribute('aria-pressed','true'); }
-      else { toggle.textContent = 'Light Mode'; toggle.setAttribute('aria-pressed','false'); }
+    const toggleBtn = document.getElementById('themeToggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      toggleBtn.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+      toggleBtn.setAttribute('aria-pressed', isLight);
+    });
 
-      toggle.addEventListener('click', () => {
-        const nowLight = body.classList.toggle('light-mode');
-        toggle.textContent = nowLight ? 'Dark Mode' : 'Light Mode';
-        toggle.setAttribute('aria-pressed', nowLight ? 'true' : 'false');
-        // save preference
-        try { localStorage.setItem('site-theme', nowLight ? 'light' : 'dark'); } catch(e){}
-      });
+    // Optional: Save preference to localStorage (persist theme)
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light-mode');
+      toggleBtn.textContent = 'Dark Mode';
+      toggleBtn.setAttribute('aria-pressed', 'true');
+    }
 
-      // Small accessibility: keyboard shortcut 'L' toggles theme
-      window.addEventListener('keydown', (e) => {
-        if((e.key === 'l' || e.key === 'L') && (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA')){
-          e.preventDefault(); toggle.click();
-        }
-      });
-    })();
+    toggleBtn.addEventListener('click', () => {
+      const isLight = document.body.classList.toggle('light-mode');
+      toggleBtn.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+      toggleBtn.setAttribute('aria-pressed', isLight);
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
   </script>
 </body>
 </html>
-      {/* Footer */}
-      <footer className="py-6 text-center text-muted-foreground text-sm">
-        © {new Date().getFullYear()} Dara Sturgeon. All Rights Reserved.
-      </footer>
-    </div>
-  );
-}
