@@ -9,7 +9,306 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
-  <style>
+  <style><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dara Sturgeon | Cybersecurity Portfolio</title>
+<style>
+  /* Reset and base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background-color: #121212;
+    color: #eee;
+    line-height: 1.6;
+  }
+  a {
+    color: #4eaaff;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  img {
+    max-width: 100%;
+  }
+
+  /* Container */
+  .container {
+    max-width: 900px;
+    margin: 1.5rem auto 3rem auto;
+    padding: 0 1rem;
+  }
+
+  /* Header/Navbar */
+  header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 1rem;
+  }
+  header h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.7rem;
+  }
+  nav a {
+    margin-left: 1rem;
+    font-weight: 600;
+  }
+  .header-left,
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+  button#theme-toggle {
+    margin-left: 1rem;
+    background: none;
+    border: 1px solid #4eaaff;
+    border-radius: 4px;
+    padding: 0.3rem 0.6rem;
+    color: #4eaaff;
+    font-weight: 600;
+    cursor: default; /* static button for demo */
+  }
+
+  /* Hero */
+  section.hero {
+    margin: 3rem 0 4rem 0;
+  }
+  section.hero h2 {
+    font-size: 2rem;
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+  }
+  section.hero p {
+    font-size: 1.1rem;
+    color: #bbb;
+    max-width: 700px;
+  }
+  .btn-group {
+    margin-top: 1rem;
+  }
+  .btn-group a {
+    display: inline-block;
+    background-color: #4eaaff;
+    color: #121212;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    margin-right: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  .btn-group a:hover {
+    background-color: #3695f3;
+  }
+
+  /* Skills */
+  section.skills {
+    margin-bottom: 3rem;
+  }
+  section.skills h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+  }
+  .skill-badge {
+    background-color: #222;
+    color: #4eaaff;
+    padding: 0.5rem 0.9rem;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  /* Experience & Education */
+  section.experience,
+  section.education {
+    margin-bottom: 3rem;
+  }
+  section.experience h3,
+  section.education h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .job,
+  .edu-item {
+    background-color: #1b1b1b;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+  }
+  .job h4,
+  .edu-item h4 {
+    margin: 0 0 0.3rem 0;
+    font-weight: 700;
+  }
+  .job .date,
+  .edu-item .date {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.7rem;
+  }
+  .job p,
+  .edu-item p {
+    margin: 0.3rem 0;
+    color: #ccc;
+  }
+
+  /* Contact */
+  section.contact {
+    margin-bottom: 3rem;
+  }
+  section.contact h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .contact-info {
+    background-color: #1b1b1b;
+    padding: 1rem 1.2rem;
+    border-radius: 6px;
+  }
+  .contact-info p {
+    margin: 0.3rem 0;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+    padding: 2rem 0 1rem 0;
+    border-top: 1px solid #333;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .header-right {
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-group a {
+      margin-bottom: 0.7rem;
+    }
+    .skills-list {
+      justify-content: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header / Navbar -->
+  <header>
+    <div class="header-left">
+      <h1>Dara Sturgeon</h1>
+      <button id="theme-toggle" title="Theme toggle (static)">Light Mode</button>
+    </div>
+    <nav class="header-right" aria-label="Main navigation">
+      <a href="Dara_Sturgeon_CV.pdf" download>Download CV</a>
+      <a href="https://linkedin.com/in/dara-sturgeon-2249b6210" target="_blank" rel="noopener">View LinkedIn</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <h2 id="hero-title">Final Year Cybersecurity Student & Freelancer</h2>
+    <p>
+      Delivering automation, governance, and digital transformation solutions that align technical outcomes with business priorities.
+    </p>
+    <div class="btn-group">
+      <a href="Dara_Sturgeon_CV.pdf" download>Download CV</a>
+      <a href="https://linkedin.com/in/dara-sturgeon-2249b6210" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="skills" aria-labelledby="skills-title">
+    <h3 id="skills-title">Key Skills</h3>
+    <div class="skills-list">
+      <span class="skill-badge">Cybersecurity & Compliance</span>
+      <span class="skill-badge">Automation & Workflow Optimization</span>
+      <span class="skill-badge">Agile Project Management</span>
+      <span class="skill-badge">Stakeholder Engagement</span>
+      <span class="skill-badge">UX/UI Accessibility (WCAG 2.2)</span>
+      <span class="skill-badge">Business Analysis & Digital Transformation</span>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="experience" aria-labelledby="experience-title">
+    <h3 id="experience-title">Experience</h3>
+
+    <article class="job">
+      <h4>IT Project Manager — P&G (Jul 2024 – Jun 2025)</h4>
+      <div class="date">Placement year</div>
+      <p>Automated a critical authorization update process, reducing time from 3 days to under 5 minutes — 99.9% improvement and standardized across regions.</p>
+      <p>Built a data export pipeline using Python, SQL, and Power Automate to achieve 100% compliance and remove manual intervention.</p>
+      <p>Led cross-functional delivery including an AI security chatbot pilot — ensuring alignment between technical implementation and business risk objectives.</p>
+    </article>
+
+    <article class="job">
+      <h4>Web Developer & Software Engineer (Freelance)</h4>
+      <div class="date">Oct 2023 – Present</div>
+      <p>Built websites and AI-driven tools for startups; introduced automation that reduced client manual tasks by up to 75%.</p>
+      <p>Integrated APIs and created Python automation scripts; worked across high-code and no-code platforms to fit client constraints.</p>
+      <p>Applied WCAG 2.2 accessibility testing in delivery to ensure compliance and excellent UX.</p>
+    </article>
+  </section>
+
+  <!-- Education -->
+  <section class="education" aria-labelledby="education-title">
+    <h3 id="education-title">Education</h3>
+
+    <article class="edu-item">
+      <h4>BSc Hons — Cybersecurity with Placement Year</h4>
+      <div class="date">University of Chester (Expected: First-Class Honours, Jun 2026)</div>
+      <p>Key modules: Ethical hacking, machine learning, cryptography, cloud security, digital forensics, and algorithms.</p>
+      <p>Graduation Date: Summer 2026.</p>
+    </article>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" aria-labelledby="contact-title">
+    <h3 id="contact-title">Contact</h3>
+    <div class="contact-info">
+      <p><strong>Email:</strong> <a href="mailto:dara.sturgeon@example.com">dara.sturgeon@example.com</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/dara-sturgeon-2249b6210" target="_blank" rel="noopener">linkedin.com/in/dara-sturgeon-2249b6210</a></p>
+    </div>
+  </section>
+</div>
+
+<!-- Footer -->
+<footer>
+  &copy; <span id="year"></span> Dara Sturgeon. All Rights Reserved.
+</footer>
+
+<script>
+  // Set current year in footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
+
     :root{
       /* Dark theme variables (default) */
       --bg: #071228;
