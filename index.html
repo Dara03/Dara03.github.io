@@ -1,130 +1,160 @@
-import { Button } from "@/components/ui/button";
-import { Sun, Moon, Linkedin } from "lucide-react";
-import { useState, useEffect } from "react";
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dara Sturgeon - Cybersecurity Student & Freelancer</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    /* Custom gradient background */
+    body {
+      background: linear-gradient(135deg, #0a1e42 0%, #12275e 100%);
+    }
+    /* Neon effect on name */
+    .neon-text {
+      text-shadow:
+        0 0 5px #0ea5e9,
+        0 0 10px #0ea5e9,
+        0 0 20px #0ea5e9,
+        0 0 40px #0ea5e9;
+    }
+    /* Light mode adjustments */
+    html[data-theme='light'] body {
+      background: #f3f4f6;
+      color: #1e293b;
+    }
+    html[data-theme='light'] .card {
+      background: #ffffff;
+      box-shadow: 0 0 15px rgb(0 0 0 / 0.1);
+    }
+    html[data-theme='light'] .btn-primary {
+      background-color: #2563eb;
+      color: white;
+    }
+    /* Button hover */
+    .btn-primary:hover {
+      background-color: #1d4ed8;
+    }
+    /* Responsive container max width */
+    .container {
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  </style>
+</head>
+<body class="text-white font-sans leading-relaxed">
 
-export default function CVShowcase() {
-  const [theme, setTheme] = useState("dark");
+  <header class="container pt-12 pb-8 flex flex-col sm:flex-row justify-between items-center">
+    <h1 class="text-5xl font-extrabold neon-text mb-4 sm:mb-0">Dara Sturgeon</h1>
+    <button
+      id="toggleTheme"
+      aria-label="Toggle light/dark mode"
+      class="px-5 py-2 rounded-md bg-blue-600 hover:bg-blue-700 transition-colors font-semibold"
+    >
+      Toggle Light/Dark
+    </button>
+  </header>
 
-  // Theme toggle effect
-  useEffect(() => {
-    document.documentElement.className = theme;
-  }, [theme]);
+  <main class="container bg-card bg-opacity-20 rounded-xl p-8 shadow-lg mb-12">
+    <h2 class="text-xl font-semibold text-blue-300 mb-4">Final Year Cybersecurity Student & Freelancer</h2>
 
-  return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-      {/* Navbar */}
-      <header className="flex justify-between items-center px-6 py-4 shadow-md bg-primary text-primary-foreground">
-        <h1 className="text-xl font-bold">Dara Sturgeon</h1>
-        <div className="flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="hover:bg-primary-foreground hover:text-primary transition"
-          >
-            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-          </Button>
-          <a
-            href="https://www.linkedin.com/in/dara-sturgeon-2249b6210"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:opacity-80"
-          >
-            <Linkedin size={24} />
-          </a>
-        </div>
-      </header>
+    <section class="mb-8">
+      <h3 class="text-2xl font-bold mb-3 border-b border-blue-500 pb-1">Professional Summary</h3>
+      <p class="text-lg max-w-prose">
+        Cybersecurity student with international experience delivering automation and risk solutions across complex systems.
+        Proven ability to streamline compliance processes by 99%, align technical outcomes with business priorities, and adapt
+        to fast-paced, client-driven environments. Skilled in Python, SQL, and stakeholder collaboration, with a sharp focus on
+        problem-solving, governance, and operational impact.
+      </p>
+    </section>
 
-      {/* Hero */}
-      <section className="text-center py-20 px-6">
-        <h2 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
-          Final Year Cybersecurity Student & Freelancer
-        </h2>
-        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-          Delivering automation, governance, and digital transformation
-          solutions that align technical outcomes with business priorities.
-        </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Button asChild size="lg" className="bg-blue-600 text-white hover:bg-blue-700">
-            <a href="/Dara_Sturgeon_CV.pdf" download>
-              Download CV
-            </a>
-          </Button>
-          <Button asChild size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-            <a href="https://www.linkedin.com/in/dara-sturgeon-2249b6210" target="_blank">
-              Connect on LinkedIn
-            </a>
-          </Button>
-        </div>
-      </section>
+    <section class="mb-8">
+      <h3 class="text-2xl font-bold mb-3 border-b border-blue-500 pb-1">Skills</h3>
+      <ul class="list-disc list-inside space-y-1 text-lg max-w-prose">
+        <li>Cybersecurity & Compliance</li>
+        <li>Process Automation & Workflow Optimization</li>
+        <li>Agile Methodologies & Project Management</li>
+        <li>Stakeholder Engagement & Client Delivery</li>
+        <li>Business Analysis & Digital Transformation</li>
+        <li>Cross-Functional Collaboration</li>
+        <li>Python, SQL, Power Automate, JavaScript</li>
+        <li>UX/UI Accessibility (WCAG 2.2)</li>
+      </ul>
+    </section>
 
-      {/* Skills */}
-      <section className="py-16 px-6 bg-muted/50">
-        <h3 className="text-3xl font-bold text-center mb-12">Key Skills</h3>
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
-          {[
-            "Cybersecurity & Compliance",
-            "Automation & Workflow Optimization",
-            "Agile Project Management",
-            "Stakeholder Engagement",
-            "UX/UI Accessibility (WCAG 2.2)",
-            "Business Analysis & Digital Transformation",
-          ].map((skill, i) => (
-            <div
-              key={i}
-              className="p-4 rounded-xl bg-card shadow hover:shadow-lg transition"
-            >
-              {skill}
-            </div>
-          ))}
-        </div>
-      </section>
+    <section class="mb-8">
+      <h3 class="text-2xl font-bold mb-3 border-b border-blue-500 pb-1">Work Experience</h3>
 
-      {/* Experience */}
-      <section className="py-16 px-6">
-        <h3 className="text-3xl font-bold text-center mb-12">Experience</h3>
-        <div className="max-w-4xl mx-auto space-y-10">
-          <div>
-            <h4 className="text-xl font-semibold">
-              IT Project Manager — P&G (Jul 2024 ‐ Jun 2025)
-            </h4>
-            <p className="text-muted-foreground mt-2">
-              Automated critical compliance workflows, reducing a 3-day process
-              to under 5 minutes (99.9% faster). Built a Python + SQL + Power
-              Automate data pipeline achieving 100% compliance, and led an AI
-              security chatbot project.
-            </p>
-          </div>
-          <div>
-            <h4 className="text-xl font-semibold">
-              Web Developer & Software Engineer — Freelance (Oct 2023 ‐ Current)
-            </h4>
-            <p className="text-muted-foreground mt-2">
-              Developed websites and automation solutions for startups,
-              reducing manual tasks by 75%. Integrated APIs and ensured WCAG
-              2.2 accessibility compliance while delivering 100% on-time
-              projects.
-            </p>
-          </div>
-        </div>
-      </section>
+      <article class="mb-6">
+        <h4 class="text-xl font-semibold">IT Project Manager (Placement Year) - P&G, Newcastle</h4>
+        <p class="italic mb-2">Jul 2024 - Jun 2025</p>
+        <ul class="list-disc list-inside space-y-1 max-w-prose">
+          <li>Automated complex compliance workflows reducing process time from 3 days to under 5 minutes (99.9% faster).</li>
+          <li>Built a fully automated data export pipeline using Python, SQL, and Power Automate achieving 100% compliance.</li>
+          <li>Led AI security chatbot project collaborating cross-functionally with developers and risk owners.</li>
+        </ul>
+      </article>
 
-      {/* Education */}
-      <section className="py-16 px-6 bg-muted/50">
-        <h3 className="text-3xl font-bold text-center mb-12">Education</h3>
-        <div className="max-w-4xl mx-auto text-center">
-          <h4 className="text-xl font-semibold">
-            BSc Hons — Cybersecurity with Placement Year
-          </h4>
-          <p className="text-muted-foreground mt-2">
-            University of Chester (Expected: First-Class Honours, Jun 2026)
-          </p>
-          <p className="mt-4">
-            Key modules: Ethical hacking, machine learning, cryptography, cloud
-            security, digital forensics, and algorithms.
-          </p>
-        </div>
-      </section>
+      <article>
+        <h4 class="text-xl font-semibold">Web Developer & Software Engineer (Freelance)</h4>
+        <p class="italic mb-2">Oct 2023 - Present</p>
+        <ul class="list-disc list-inside space-y-1 max-w-prose">
+          <li>Developed optimized websites and AI solutions for startups, reducing client manual tasks by up to 75%.</li>
+          <li>Integrated Python automation scripts and APIs, adapting solutions between high-code and no-code tools.</li>
+          <li>Applied WCAG 2.2 accessibility testing to ensure high UX and compliance.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="mb-8">
+      <h3 class="text-2xl font-bold mb-3 border-b border-blue-500 pb-1">Education</h3>
+      <p class="max-w-prose text-lg">
+        <strong>BSc Hons - Cybersecurity with Placement Year</strong><br />
+        University of Chester (Expected June 2026) — First-Class Honours<br />
+        Key Modules: Ethical hacking, machine learning, software management, cryptography, digital forensics, cloud computing, data structures and algorithms.
+      </p>
+    </section>
+
+    <div class="flex flex-wrap gap-4 justify-center mt-12">
+      <a
+        href="YOUR_CV_LINK_HERE.pdf"
+        download
+        class="btn-primary px-6 py-3 rounded-md font-semibold shadow-md hover:shadow-lg transition duration-300"
+      >
+        Download CV
+      </a>
+      <a
+        href="https://www.linkedin.com/in/dara-sturgeon-2249b6210"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary px-6 py-3 rounded-md font-semibold shadow-md hover:shadow-lg transition duration-300"
+      >
+        LinkedIn Profile
+      </a>
     </div>
-  );
-}
+  </main>
+
+  <footer class="container text-center pb-8 text-blue-300 italic text-sm">
+    &copy; 2025 Dara Sturgeon
+  </footer>
+
+  <script>
+    // Dark/light toggle
+    const toggleBtn = document.getElementById('toggleTheme');
+    toggleBtn.addEventListener('click', () => {
+      const htmlEl = document.documentElement;
+      if (htmlEl.getAttribute('data-theme') === 'dark') {
+        htmlEl.setAttribute('data-theme', 'light');
+      } else {
+        htmlEl.setAttribute('data-theme', 'dark');
+      }
+    });
+  </script>
+</body>
+</html>
